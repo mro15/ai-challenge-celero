@@ -39,7 +39,7 @@ class RepresentationHandler(object):
         docs = [TaggedDocument(doc, [i]) for i, doc in enumerate(reviews)]
         #instantiate the doc2vec model
         self.model = Doc2Vec(vector_size=100, window=10, min_count=1, workers=self.cores,
-                            epochs=64, dm=1, dmean=1)
+                            epochs=50, sample=1e-3, negative=5, dm=0)
         self.model.build_vocab(docs) #build vocabulary
         self.model.train(docs, total_examples=self.model.corpus_count,
                         epochs=self.model.epochs) #train the model

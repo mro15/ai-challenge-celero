@@ -25,6 +25,8 @@ class Classifier(object):
     def create_mlp_model(self):
         model = Sequential()
         model.add(Dense(200, activation='relu', input_dim=100))
+        model.add(Dense(128, activation='relu'))
+        model.add(Dropout(0.25))
         model.add(Dense(64, activation='relu'))
         model.add(Dropout(0.25))
         model.add(Dense(2, activation='softmax'))
@@ -38,7 +40,7 @@ class Classifier(object):
     def train(self, train_data, train_labels):
         #shuffle data to avoid overfitting
         train_data, train_labels = shuffle(train_data, train_labels, random_state=0)
-        self.mlp_model.fit(train_data, train_labels, validation_split=0.25, epochs=64, batch_size=128)
+        self.mlp_model.fit(train_data, train_labels, validation_split=0.25, epochs=64, batch_size=32)
 
     """
         This function saves the trained model
