@@ -27,8 +27,6 @@ class Classifier(object):
         model.add(Dense(200, activation='relu', input_dim=100))
         model.add(Dense(128, activation='relu'))
         model.add(Dropout(0.25))
-        model.add(Dense(64, activation='relu'))
-        model.add(Dropout(0.25))
         model.add(Dense(2, activation='softmax'))
         model.compile(loss='binary_crossentropy',
                     optimizer='adam', metrics=['accuracy'])
