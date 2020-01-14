@@ -37,7 +37,7 @@ class DataPreprocessing(object):
     """
     def split_data_in_arrays(self, data, d_type):
         vec_data =  data[d_type]["neg"] + data[d_type]["pos"]
-        labels = [-1]*len(data[d_type]["neg"]) + [1]*len(data[d_type]["pos"])
+        labels = [0]*len(data[d_type]["neg"]) + [1]*len(data[d_type]["pos"])
         return vec_data, labels
 
     """"
